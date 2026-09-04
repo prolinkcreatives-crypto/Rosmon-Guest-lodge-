@@ -1,4 +1,0 @@
-CREATE POLICY "Staff read gallery objects" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'gallery' AND public.is_staff(auth.uid()));
-CREATE POLICY "Managers insert gallery objects" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'gallery' AND public.can_manage(auth.uid()));
-CREATE POLICY "Managers update gallery objects" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'gallery' AND public.can_manage(auth.uid())) WITH CHECK (bucket_id = 'gallery' AND public.can_manage(auth.uid()));
-CREATE POLICY "Managers delete gallery objects" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'gallery' AND public.can_manage(auth.uid()));
