@@ -1,0 +1,368 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.tone-ink *, .tone-charcoal *, .tone-espresso *));
+
+/*
+ * Rosmon Guest Lodge — design system
+ * Warm luxury: near-black → charcoal → espresso → warm taupe → sand,
+ * with muted champagne gold as the only accent. Never hardcode colours.
+ *
+ * Tonal scopes: add `tone-ink`, `tone-charcoal`, `tone-espresso`,
+ * `tone-taupe` or `tone-sand` to a section to re-theme every token inside it.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 12px);
+  --radius-md: calc(var(--radius) - 8px);
+  --radius-lg: calc(var(--radius) - 4px);
+  --radius-xl: var(--radius);
+  --radius-2xl: calc(var(--radius) + 4px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 20px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-ink: var(--ink);
+  --color-charcoal: var(--charcoal);
+  --color-espresso: var(--espresso);
+  --color-taupe: var(--taupe);
+  --color-sand: var(--sand);
+  --color-ivory: var(--ivory);
+  --color-hairline: var(--hairline);
+  --color-glass: var(--glass);
+
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-rosmon: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  --radius: 1.75rem; /* 28px — major surfaces */
+
+  /* Brand constants ----------------------------------------------------- */
+  --ink: oklch(0.15 0.006 62);
+  --charcoal: oklch(0.255 0.009 60);
+  --espresso: oklch(0.285 0.024 48);
+  --taupe: oklch(0.86 0.017 76);
+  --sand: oklch(0.945 0.014 82);
+  --ivory: oklch(0.955 0.014 84);
+  --gold-soft: oklch(0.85 0.055 86);
+  --gold-deep: oklch(0.56 0.075 74);
+
+  /* Default scope: warm sand ------------------------------------------- */
+  --background: var(--sand);
+  --foreground: oklch(0.24 0.014 58);
+  --card: oklch(0.975 0.012 84);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.975 0.012 84);
+  --popover-foreground: var(--foreground);
+  --gold: oklch(0.6 0.078 76);
+  --gold-contrast: oklch(0.975 0.012 84);
+  --primary: var(--gold);
+  --primary-foreground: var(--gold-contrast);
+  --secondary: oklch(0.9 0.016 80);
+  --secondary-foreground: oklch(0.24 0.014 58);
+  --muted: oklch(0.91 0.014 80);
+  --muted-foreground: oklch(0.475 0.017 62);
+  --accent: oklch(0.9 0.018 80);
+  --accent-foreground: oklch(0.24 0.014 58);
+  --destructive: oklch(0.52 0.16 28);
+  --destructive-foreground: oklch(0.97 0.012 84);
+  --border: oklch(0.28 0.02 55 / 12%);
+  --input: oklch(0.28 0.02 55 / 16%);
+  --ring: oklch(0.6 0.078 76 / 40%);
+  --hairline: oklch(0.28 0.02 55 / 11%);
+  --glass: oklch(0.98 0.014 84 / 66%);
+  --glass-strong: oklch(0.975 0.014 84 / 85%);
+  --glass-hairline: oklch(0.28 0.02 55 / 12%);
+  --hover-wash: oklch(0.28 0.02 55 / 4%);
+
+  --shadow-soft: 0 1px 0 oklch(1 0 0 / 55%) inset,
+    0 14px 40px -28px oklch(0.24 0.03 55 / 40%);
+  --shadow-lift: 0 1px 0 oklch(1 0 0 / 65%) inset,
+    0 34px 70px -42px oklch(0.24 0.03 55 / 48%);
+}
+
+/* Tonal scopes ----------------------------------------------------------- */
+
+.tone-sand {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.tone-taupe {
+  --background: var(--taupe);
+  --card: oklch(0.915 0.016 80);
+  --popover: var(--card);
+  --secondary: oklch(0.83 0.02 76);
+  --muted: oklch(0.835 0.018 78);
+  --muted-foreground: oklch(0.455 0.019 62);
+  --accent: oklch(0.83 0.022 76);
+  --border: oklch(0.28 0.02 55 / 14%);
+  --hairline: oklch(0.28 0.02 55 / 13%);
+  --glass: oklch(0.93 0.016 80 / 66%);
+  --glass-strong: oklch(0.92 0.016 80 / 86%);
+  --glass-hairline: oklch(0.28 0.02 55 / 14%);
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.tone-ink,
+.tone-charcoal,
+.tone-espresso {
+  --foreground: oklch(0.935 0.014 84);
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --gold: oklch(0.78 0.062 84);
+  --gold-contrast: oklch(0.18 0.012 55);
+  --primary: var(--gold);
+  --primary-foreground: var(--gold-contrast);
+  --secondary-foreground: var(--foreground);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.62 0.17 28);
+  --destructive-foreground: oklch(0.96 0.012 84);
+  --border: oklch(0.96 0.02 85 / 12%);
+  --input: oklch(0.96 0.02 85 / 15%);
+  --ring: oklch(0.78 0.062 84 / 45%);
+  --hairline: oklch(0.96 0.02 85 / 11%);
+  --glass-hairline: oklch(0.96 0.02 85 / 14%);
+  --hover-wash: oklch(0.96 0.02 85 / 5%);
+  color-scheme: dark;
+
+  --shadow-soft: 0 1px 0 oklch(1 0 0 / 6%) inset,
+    0 18px 50px -32px oklch(0 0 0 / 85%);
+  --shadow-lift: 0 1px 0 oklch(1 0 0 / 8%) inset,
+    0 40px 80px -42px oklch(0 0 0 / 92%);
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.tone-ink {
+  --background: var(--ink);
+  --card: oklch(0.205 0.009 60);
+  --popover: var(--card);
+  --secondary: oklch(0.235 0.009 60);
+  --muted: oklch(0.225 0.009 60);
+  --muted-foreground: oklch(0.735 0.012 78);
+  --accent: oklch(0.255 0.01 60);
+  --glass: oklch(0.16 0.008 60 / 58%);
+  --glass-strong: oklch(0.14 0.008 60 / 80%);
+}
+
+.tone-charcoal {
+  --background: var(--charcoal);
+  --card: oklch(0.305 0.011 58);
+  --popover: var(--card);
+  --secondary: oklch(0.325 0.011 58);
+  --muted: oklch(0.32 0.011 58);
+  --muted-foreground: oklch(0.765 0.013 78);
+  --accent: oklch(0.34 0.012 58);
+  --glass: oklch(0.27 0.01 58 / 60%);
+  --glass-strong: oklch(0.25 0.01 58 / 82%);
+}
+
+.tone-espresso {
+  --background: var(--espresso);
+  --card: oklch(0.335 0.026 46);
+  --popover: var(--card);
+  --secondary: oklch(0.355 0.027 46);
+  --muted: oklch(0.35 0.026 46);
+  --muted-foreground: oklch(0.775 0.02 74);
+  --accent: oklch(0.375 0.028 46);
+  --glass: oklch(0.3 0.024 46 / 60%);
+  --glass-strong: oklch(0.28 0.024 46 / 82%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--gold-contrast);
+  }
+}
+
+/* Surfaces --------------------------------------------------------------- */
+
+@utility glass {
+  background-color: var(--glass);
+  backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid var(--glass-hairline);
+}
+
+@utility glass-strong {
+  background-color: var(--glass-strong);
+  backdrop-filter: blur(28px) saturate(150%);
+  border: 1px solid var(--glass-hairline);
+}
+
+@utility surface {
+  background-color: var(--card);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility wash-hover {
+  background-color: var(--hover-wash);
+}
+
+@utility hairline-t {
+  border-top: 1px solid var(--hairline);
+}
+
+@utility lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility gold-rule {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 35%,
+    var(--gold) 65%,
+    transparent
+  );
+}
+
+/* Readability veil for text sitting on photography. Warm, not black. */
+@utility image-veil {
+  background:
+    radial-gradient(
+      ellipse 140% 105% at 0% 100%,
+      oklch(0.13 0.012 52 / 88%) 0%,
+      oklch(0.13 0.012 52 / 58%) 48%,
+      oklch(0.13 0.012 52 / 22%) 72%,
+      transparent 88%
+    ),
+    linear-gradient(
+      to top,
+      oklch(0.14 0.012 52 / 92%) 0%,
+      oklch(0.14 0.012 52 / 64%) 45%,
+      oklch(0.14 0.012 52 / 20%) 72%,
+      transparent 92%
+    );
+}
+
+@utility image-veil-soft {
+  background: linear-gradient(
+    to top,
+    oklch(0.16 0.014 52 / 62%) 0%,
+    oklch(0.16 0.014 52 / 22%) 45%,
+    transparent 80%
+  );
+}
+
+/* Motion ----------------------------------------------------------------- */
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.9s var(--ease-rosmon),
+    transform 0.9s var(--ease-rosmon);
+  will-change: opacity, transform;
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Admin scope ------------------------------------------------------------ */
+/* Brighter and more functional than the public site: warm ivory surfaces,
+   tighter radii, the same gold accent used sparingly. */
+
+.tone-admin {
+  --radius: 0.875rem;
+  --background: oklch(0.965 0.008 84);
+  --foreground: oklch(0.22 0.012 58);
+  --card: oklch(0.995 0.004 84);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.995 0.004 84);
+  --popover-foreground: var(--foreground);
+  --secondary: oklch(0.935 0.01 82);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.945 0.008 82);
+  --muted-foreground: oklch(0.5 0.014 62);
+  --accent: oklch(0.93 0.012 82);
+  --accent-foreground: var(--foreground);
+  --border: oklch(0.28 0.02 55 / 13%);
+  --input: oklch(0.28 0.02 55 / 18%);
+  --hairline: oklch(0.28 0.02 55 / 11%);
+  --glass: oklch(0.995 0.006 84 / 78%);
+  --glass-strong: oklch(0.995 0.006 84 / 92%);
+  --glass-hairline: oklch(0.28 0.02 55 / 12%);
+  --shadow-soft: 0 1px 2px oklch(0.24 0.03 55 / 6%),
+    0 8px 24px -20px oklch(0.24 0.03 55 / 30%);
+  --shadow-lift: 0 2px 4px oklch(0.24 0.03 55 / 7%),
+    0 24px 48px -32px oklch(0.24 0.03 55 / 34%);
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
