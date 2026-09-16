@@ -54,6 +54,7 @@ export function Footer() {
             © {new Date().getFullYear()} {site.name}
           </span>
           <span>Chipata · Zambia</span>
+          <span>Designed by Prolink Creatives</span>
         </div>
       </div>
     </footer>
